@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { writable } from 'svelte/store';
-import { browser } from '@app/enviroment';
+import { browser } from '$app/environment';
 
 const data = browser ? JSON.parse(window.localStorage.getItem('st-todo-list')) ?? [] : [];
 
@@ -14,7 +14,7 @@ todos.subscribe((value) => {
 
 export const addTodo = () => {
 	todos.update((currentTodos) => {
-		return [...currentTodos, { id: uuidv4(), text: '', completed: false }];
+		return [...currentTodos, { id: uuidv4(), text: '', complete: false }];
 	});
 };
 
